@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<!-- saved from url=(0058)https://colorlib.com/etc/tb/Table_Responsive_v1/index.html -->
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="/css/style.css" />
+	<link rel="stylesheet" href="/css/table.css" />
+	<link rel="shortcut icon" type="image/x-icon" href="./images/logo-head.svg" />
+	<title>kingbook</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+		integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
+</head>
+
+<body style="background-color: #d8e6fabb">
+	<table class="container">
+		<thead>
+			<tr>
+				<th>
+					<h1>Ismi</h1>
+				</th>
+				<th>
+					<h1>Telefoni</h1>
+				</th>
+				<th>
+					<h1>Kitob</h1>
+				</th>
+				<th>
+					<h1>Vaqti</h1>
+				</th>
+			</tr>
+		</thead>
+		<tbody style="color: rgb(26, 31, 31)">
+			<% notes.forEach(note=> { %>
+				<tr>
+					<td>
+						<%= note.name %>
+					</td>
+					<td>
+						<%= note.phone %>
+					</td>
+					<td>
+						<%= note.book %>
+					</td>
+					<td>
+						<%= note.date %>
+					</td>
+					<td>
+						<form method="POST" action="/api/kurslar/<%= note._id %>" >
+							<button >
+								delete
+							</button>
+						</form>
+					</td>
+				</tr>
+				<% }) %>
+		</tbody>
+	</table>
+</body>
+
+<script>
+	const formButton2 = document.getElementById("form-button");
+
+		formButton2.addEventListener("click", (e) => {
+			alert("Muvaffaqqiyatli o'chirildi!")
+		})
+</script>
+
+</html>

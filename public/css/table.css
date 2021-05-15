@@ -1,0 +1,107 @@
+/*	
+	Side Navigation Menu V2, RWD
+	===================
+	Author: https://github.com/pablorgarcia
+ */
+
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+	font-family: "Open Sans", sans-serif;
+	font-weight: 300;
+	line-height: 1.42em;
+}
+
+h1 {
+	font-size: 3em;
+	font-weight: 300;
+	line-height: 1em;
+	text-align: center;
+	color: #191d1f;
+}
+
+h2 {
+	font-size: 1em;
+	font-weight: 300;
+	text-align: center;
+	display: block;
+	line-height: 1em;
+	padding-bottom: 2em;
+	color: #fb667a;
+}
+
+h2 a {
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #fb667a;
+	text-decoration: none;
+}
+
+.blue {
+	color: #185875;
+}
+.yellow {
+	color: #fff842;
+}
+
+.container th h1 {
+	font-weight: bold;
+	font-size: 1.3em;
+	text-transform: uppercase;
+	text-align: left;
+	color: #185875;
+}
+
+.container td {
+	padding: 25px 10px;
+	font-size: 16px;
+	font-weight: normal;
+	-webkit-box-shadow: 0 2px 2px -2px #0e1119;
+	-moz-box-shadow: 0 2px 2px -2px #0e1119;
+	box-shadow: 0 2px 2px -2px #0e1119;
+}
+
+.container {
+	text-align: left;
+	overflow: hidden;
+	width: 80%;
+	margin: 0 auto;
+	display: table;
+	padding: 0 0 8em 0;
+}
+
+.container th {
+	border-bottom: 5px double rgb(117, 117, 117);
+	padding: 25px 10px;
+}
+
+/* Background-color of the odd rows */
+/* .container tr:nth-child(odd) {
+	background-color: #e8f0ff;
+} */
+
+/* Background-color of the even rows */
+/* .container tr:nth-child(even) {
+	background-color: #f0e8ff;
+} */
+
+/* .container th {
+	background-color: #e8f0ff;
+} */
+
+.container td:first-child {
+	color: tomato;
+	font-weight: 600;
+}
+
+.container tr:hover {
+	background-color: rgba(109, 115, 126, 0.089);
+}
+
+@media (max-width: 800px) {
+	.container td:nth-child(4),
+	.container th:nth-child(4) {
+		display: none;
+	}
+}
