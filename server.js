@@ -44,11 +44,13 @@ app.post("/", async (req, res, nexts) => {
         const books = ["Ingliz - O'zbek", "Ingliz - Rus", "Rus - O'zbek"];
         const { tab, title, content } = req.body;
 
-         await Note.create({
+        await Note.create({
             name: title,
             phone: content,
             book: books[tab],
-            date: new Date(),
+            date: new Date().toLocaleString()
+            // date: new Date(),
+            // date: new Date().toLocaleString("en-UZ")
         });
 
         res.redirect("/");
