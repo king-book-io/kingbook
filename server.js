@@ -50,7 +50,7 @@ app.post("/", async (req, res, nexts) => {
             book: books[tab],
             // date: Date().toLocaleString()
             // date: new Date(),
-            date: new Date().toLocaleString("en-UZ")
+            date: Date().toLocaleString("en-UZ")
         });
 
         res.redirect("/");
