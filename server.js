@@ -48,9 +48,9 @@ app.post("/", async (req, res, nexts) => {
             name: title,
             phone: content,
             book: books[tab],
-            date: new Date().toLocaleString()
+            // date: Date().toLocaleString()
             // date: new Date(),
-            // date: new Date().toLocaleString("en-UZ")
+            date: new Date().toLocaleString("en-UZ")
         });
 
         res.redirect("/");
