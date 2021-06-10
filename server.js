@@ -20,6 +20,9 @@ app.use(express.json());
 app.use(cors());
 app.use(express.static(__dirname + "/public"));
 
+
+let notes
+
 mongoose.connect(
     "mongodb+srv://ihtiyor:ihtiyor12345@cluster0.og8zg.mongodb.net/notesDB",
     {
@@ -89,11 +92,11 @@ app.post("/api/kurslar", async (req, res, next) => {
 })
 
 // delete method
-app.post('/api/kurslar/:id', async (req, res) => {
+app.post('/api/kurslar/:id', async (req, res,next) => {
     try {
         const deletedCourse = await Note.findByIdAndDelete(req.params.id)
+        notes = await Note.find().sort({ date: 'desc' })
         res.send("Ushbu muvaffaqiyatli o'chirildi ")
-
     } catch (error) {
         // res.redirect("/kurslar")
         console.log(error)
@@ -103,6 +106,7 @@ app.post('/api/kurslar/:id', async (req, res) => {
 
 // admin routes
 app.get("/admin", (req, res, nexts) => {
+    console.warn("salom2");
     res.redirect("/login");
 });
 
@@ -111,10 +115,9 @@ app.get("/admin", (req, res) => {
 });
 
 app.post("/admin", async (req, res, nexts) => {
-    console.log(req.isAuth);
+    console.log("req.isAuth");
+    notes = await Note.find().sort({ date: 'desc' })
     if (req.body.email == email && req.body.password == password) {
-        const notes = await Note.find().sort({ date: 'desc' })
-
         res.render("admin", { notes });
     } else {
         res.redirect("/login");
@@ -130,8 +133,10 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login", async (req, res, next) => {
+    notes = await Note.find().sort({ date: 'desc' })
     if (req.body.email == email && req.body.password == password) {
-        res.redirect("/admin");
+        console.warn("wqertyu");
+        res.redirect("/admin", { notes });
     } else {
         res.redirect("/login");
     }

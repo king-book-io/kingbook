@@ -35,38 +35,48 @@
 		</thead>
 		<tbody style="color: rgb(26, 31, 31)">
 			<% notes.forEach(note=> { %>
-				<tr>
-					<td>
-						<%= note.name %>
-					</td>
-					<td>
-						<%= note.phone %>
-					</td>
-					<td>
-						<%= note.book %>
-					</td>
-					<td>
-						<%= note.date %>
-					</td>
-					<td>
-						<form method="POST" action="/api/kurslar/<%= note._id %>" >
-							<button >
-								delete
-							</button>
-						</form>
-					</td>
-				</tr>
-				<% }) %>
+			<tr>
+				<td>
+					<%= note.name %>
+				</td>
+				<td>
+					<%= note.phone %>
+				</td>
+				<td>
+					<%= note.book %>
+				</td>
+				<td>
+					<%= note.date %>
+				</td>
+				<td>
+					<!-- <form  action="/api/kurslar/<%= note._id %>?_method=DELETE"> -->
+					<button id="<%= note._id %>" onclick="deleteOrder('<%= note._id %>')">
+						delete
+					</button>
+					<!-- </form> -->
+				</td>
+			</tr>
+			<% }) %>
 		</tbody>
 	</table>
 </body>
 
 <script>
+	console.warn(window, history, notes);
 	const formButton2 = document.getElementById("form-button");
 
-		formButton2.addEventListener("click", (e) => {
-			alert("Muvaffaqqiyatli o'chirildi!")
+	formButton2.addEventListener("click", (e) => {
+		alert("Muvaffaqqiyatli o'chirildi!")
+	})
+
+	function deleteOrder(id) {
+		console.log(id)
+		fetch(`/api/kurslar/${id}`, {
+			method: "POST"
+		}).then(r => {
+			window.location.reload()
 		})
+	}
 </script>
 
 </html>

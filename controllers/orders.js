@@ -51,10 +51,10 @@ exports.update = catchAsync(async (req, res, next) => {
 });
 
 exports.delete = catchAsync(async (req, res, next) => {
-    await Note.findById(req.params.id);
-
+    await Note.findByIdAndDelete(req.params.id);
+    const notes = await Note.find().lean();
     res.status(204).json({
         success: true,
-        data: null,
+        data: notes,
     });
 });
